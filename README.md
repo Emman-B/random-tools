@@ -2,7 +2,7 @@
 
 These are some tools for generating random numbers. It uses Javascript's built-in <code>Math.random()</code> function for generating random numbers, which also means that the randomly generated numbers are not cryptographically secure and shouldn't be used for anything related to security.
 
-This project was made to learn more about React and web development. Github Pages was used to publish this.
+This project was made to learn more about React, Material UI, and web development in general. Github Pages was used to publish this.
 
 ## Installation
 
