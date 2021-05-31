@@ -1,4 +1,4 @@
-import { Button, Paper, TextField, Typography } from '@material-ui/core';
+import { Button, Collapse, Paper, TextField, Typography } from '@material-ui/core';
 import { generateRandomNumber } from './NumberGeneratorLogic.js';
 import { makeStyles } from '@material-ui/core';
 import { useState } from 'react';
@@ -11,6 +11,12 @@ const useStyles = makeStyles((theme) => ({
   result: {
     padding: '10px',
     minHeight: '10pt',
+  },
+  resultTitle: {
+    paddingTop: '5px',
+    paddingLeft: '5px',
+    minHeight: '10pt',
+    fontWeight: 'bold',
   },
 }));
 
@@ -26,9 +32,11 @@ function NumberGenerator() {
 
   // handling change of min or max
   const handleMinChange = (event) => {
+    setResultText('');
     setMin(Number.parseFloat(event.target.value));
   };
   const handleMaxChange = (event) => {
+    setResultText('');
     setMax(Number.parseFloat(event.target.value));
   };
 
@@ -50,7 +58,10 @@ function NumberGenerator() {
           }
         }}>Generate</Button>
       <Paper>
-        <Typography className={classes.result}>{resultText}</Typography>
+        <Collapse in={(resultText)?true:false}>
+          <Typography className={classes.resultTitle}>Result</Typography>
+          <Typography className={classes.result}>{resultText}</Typography>
+        </Collapse>
       </Paper>
     </>
   );

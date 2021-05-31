@@ -1,9 +1,9 @@
 import { makeStyles, Paper } from "@material-ui/core";
 import NumberGenerator from "./components/NumberGenerator";
-
-// Styles
+import ListRandomizer from "./components/ListRandomizer";
 import './App.css';
 
+// Styles
 const useStyles = makeStyles((theme) => ({
   root: {
     // margins/padding/etc
@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
 
     // width/height
     minWidth: '20vw',
-    maxWidth: '50vw',
+    // maxWidth: '50vw',
   }
 }));
 
@@ -21,9 +21,14 @@ function App() {
   const classes = useStyles();
 
   return (
-    <Paper className={classes.root}>
-      <NumberGenerator />
-    </Paper>
+    <>
+      <Paper className={classes.root}>
+        <NumberGenerator />
+      </Paper>
+      <Paper className={classes.root}>
+        <ListRandomizer />
+      </Paper>
+    </>
   );
 }
 
