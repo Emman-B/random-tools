@@ -1,4 +1,4 @@
-import { Button, TextField } from '@material-ui/core';
+import { Button, Paper, TextField, Typography } from '@material-ui/core';
 import { generateRandomNumber } from './NumberGeneratorLogic.js';
 import { makeStyles } from '@material-ui/core';
 import { useState } from 'react';
@@ -8,6 +8,10 @@ const useStyles = makeStyles((theme) => ({
   generateButton: {
     margin: '5px',
   },
+  result: {
+    padding: '10px',
+    minHeight: '10pt',
+  },
 }));
 
 // Component Function
@@ -15,6 +19,7 @@ function NumberGenerator() {
   // == State to keep track of ==
   const [min, setMin] = useState(0);
   const [max, setMax] = useState(0);
+  const [resultText, setResultText] = useState('');
 
   // retrieve the styles
   const classes = useStyles();
@@ -39,8 +44,14 @@ function NumberGenerator() {
         className={classes.generateButton}
         disabled={min > max}
         onClick={(event) => {
-          console.log(generateRandomNumber(min, max));
+          const randomlyGeneratedNumber = generateRandomNumber(min, max);
+          if (randomlyGeneratedNumber) {
+            setResultText(randomlyGeneratedNumber);
+          }
         }}>Generate</Button>
+      <Paper>
+        <Typography className={classes.result}>{resultText}</Typography>
+      </Paper>
     </>
   );
 };
